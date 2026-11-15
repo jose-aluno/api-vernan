@@ -2,6 +2,8 @@
 
 API REST em Node.js (Express) que cifra e decifra mensagens usando a **Cifra de Vernam**: o texto e a chave são combinados byte a byte com a operação XOR, e a chave precisa ter o mesmo tamanho do texto.
 
+Está hospedada em: https://api-vernan.onrender.com
+
 ## Integrantes
 
 - José Henrique Falsarella Lima Oliveira
