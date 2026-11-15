@@ -1,0 +1,12 @@
+{
+  "name": "vernam-api",
+  "version": "1.0.0",
+  "description": "API para cifrar e decifrar mensagens com a Cifra de Vernam",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}
