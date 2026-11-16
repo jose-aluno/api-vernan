@@ -4,8 +4,6 @@ const app = express();
 app.use(express.json());
 
 const PORT = process.env.PORT || 3000;
-const MAX_CHAVE = 255; 
-const MAX_TEXTO_CIFRADO = 2048; 
 
 function xor(dados, chave) {
   const resultado = Buffer.alloc(dados.length);
@@ -33,9 +31,6 @@ app.post('/cifrar', (req, res) => {
   if (typeof chave !== 'string' || chave.length === 0) {
     return res.status(400).json({ error: 'O campo "chave" é obrigatório.' });
   }
-  if (chave.length > MAX_CHAVE) {
-    return res.status(400).json({ error: `A chave excede ${MAX_CHAVE} caracteres.` });
-  }
 
   const claroBytes = Buffer.from(textoClaro, 'utf8');
   const chaveBytes = Buffer.from(chave, 'utf8');
@@ -58,14 +53,8 @@ app.post('/decifrar', (req, res) => {
       error: '"textoCifrado" deve conter apenas 0 e 1, em grupos de 8 bits (1 byte cada).',
     });
   }
-  if (textoCifrado.length > MAX_TEXTO_CIFRADO) {
-    return res.status(400).json({ error: `"textoCifrado" excede ${MAX_TEXTO_CIFRADO} caracteres.` });
-  }
   if (typeof chave !== 'string' || chave.length === 0) {
     return res.status(400).json({ error: 'O campo "chave" é obrigatório.' });
-  }
-  if (chave.length > MAX_CHAVE) {
-    return res.status(400).json({ error: `A chave excede ${MAX_CHAVE} caracteres.` });
   }
 
   const cifradoBytes = binarioParaBytes(textoCifrado);
