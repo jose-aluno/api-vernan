@@ -62,7 +62,7 @@ app.post('/decifrar', (req, res) => {
 
   if (chaveBytes.length !== cifradoBytes.length) {
     return res.status(400).json({
-      error: `A chave deve ter o mesmo tamanho do texto cifrado (${cifradoBytes.length} bytes), mas tem ${chaveBytes.length}.`,
+      error: `A chave deve ter o mesmo tamanho do texto cifrado.`,
     });
   }
 
